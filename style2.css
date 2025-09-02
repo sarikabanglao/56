@@ -1,0 +1,238 @@
+/* -- ตัวแปรสีและฟอนต์ -- */
+:root {
+    --primary-color: #5C4033; /* Dark Brown - สีหลักสำหรับ Header, Footer */
+    --secondary-color: #CD853F; /* Peru - สีเน้นสำหรับปุ่ม, ราคา */
+    --accent-color: #8B4513; /* SaddleBrown - สีเน้นรอง */
+    --background-color: #FFF8DC; /* Cornsilk - สีพื้นหลังอ่อนๆ */
+    --card-background: #FFFFFF; /* White - สีพื้นหลัง Card */
+    --text-color: #3C2F2F; /* Dark Grey Brown - สีข้อความทั่วไป */
+    --light-text-color: #706F6F; /* Light Grey Brown - สีข้อความรอง */
+    --heading-font: 'Playfair Display', serif; /* ฟอนต์หรูหราสำหรับหัวข้อ */
+    --body-font: 'Kanit', sans-serif; /* ฟอนต์อ่านง่ายสำหรับเนื้อหา */
+}
+
+/* -- รีเซ็ตและตั้งค่าพื้นฐาน -- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* -- แถบนำทาง (Navbar) -- */
+.navbar {
+    background: var(--card-background);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--heading-font);
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: 400;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* -- ส่วนหัวของหน้า (Page Header) -- */
+.page-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.page-header h1 {
+    font-family: var(--heading-font);
+    font-size: 3.8rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* -- เนื้อหาหลักของหน้า -- */
+.page-content {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+/* -- Grid รายการอาหาร -- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+/* -- การ์ดรายการอาหาร (Menu Card) -- */
+.menu-card {
+    background: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #f0e6da;
+}
+
+.menu-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.card-content {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 200px);
+}
+
+.card-content h3 {
+    font-family: var(--heading-font);
+    font-size: 1.7rem;
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    text-align: right;
+    margin-top: auto;
+}
+
+/* -- Footer -- */
+.site-footer {
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.site-footer p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+
+/* --- Responsive Design สำหรับหน้าจอขนาดเล็ก --- */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo {
+        font-size: 1.8rem;
+    }
+    .page-header h1 {
+        font-size: 2.8rem;
+        padding: 3rem 1rem;
+    }
+    .page-content h2 {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-content {
+        height: auto;
+    }
+    .menu-card img {
+        height: 180px;
+    }
+}
